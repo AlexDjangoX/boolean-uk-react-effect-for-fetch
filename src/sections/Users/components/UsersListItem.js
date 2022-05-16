@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 const UsersListItem = ({ item }) => {
-  const [gender, setGender] = useState(true);
-
   return (
     <li className={item.gender === "male" ? "bg-blue" : "bg-pink"}>
       <img src={item.picture.medium} alt="Ritthy Ryan" />
