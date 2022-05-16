@@ -5,7 +5,7 @@ import ArtList from "./sections/Art/components/ArtList";
 import UsersSection from "./sections/Users";
 import "./styles.css";
 
-const artUrl = "https://api.artic.edu/api/v1/artworks";
+const artBaseUrl = "https://api.artic.edu/api/v1/artworks";
 const artUrlFields = "?fields=id,title,image_id,subject_titles,artist_display";
 
 function App() {
@@ -17,14 +17,11 @@ function App() {
 
   async function getArtData() {
     try {
-      const response = await fetch(`${artUrl}${artUrlFields}`);
+      const response = await fetch(`${artBaseUrl}${artUrlFields}`);
       const data = await response.json();
       setArtData(data.data);
-
-      console.log(data.data);
-      console.log(artData);
     } catch (error) {
-      console.log("Art error", error);
+      console.log("Art error: ", error);
     }
   }
 
