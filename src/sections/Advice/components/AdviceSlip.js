@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import FavoriteSlipsList from "./FavouriteSlipsList";
 import { Button, Grid } from "@nextui-org/react";
 
 const AdviceSlip = ({ advice, getSomeAdvice }) => {
-  console.log(advice.id);
-  console.log(advice.advice);
+  const [favList, setFavList] = useState([]);
 
-  const addToFavorites = () => {};
+  const addToFavorites = () => {
+    if (!favList.includes(advice.advice))
+      setFavList([...favList, advice.advice]);
+  };
 
   return (
     <React.Fragment>
@@ -28,12 +30,7 @@ const AdviceSlip = ({ advice, getSomeAdvice }) => {
       </section>
       <section className="favorite-slips-list">
         <h3>Favorite Advice Slips</h3>
-        <ul>
-          <FavoriteSlipsList />
-          <li>Measure twice, cut once.</li>
-          <li>Don't let the bastards grind you down.</li>
-          <li>Always the burrito.</li>
-        </ul>
+        <FavoriteSlipsList favList={favList} />
       </section>
     </React.Fragment>
   );
